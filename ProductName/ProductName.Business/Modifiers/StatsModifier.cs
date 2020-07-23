@@ -19,11 +19,37 @@ namespace ProductName.Business.Modifiers
 
         public void ApplyModifier(Character character)
         {
-            switch (Stat)
+            switch (Stat.ToLower())
             {
-                case "strenght":
+                case "strength":
                     {
-                        character.
+                        character.Stats.Strength += Value;
+                        break;
+                    }
+                case "dexterity":
+                    {
+                        character.Stats.Dexterity += Value;
+                        break;
+                    }
+                case "constitution":
+                    {
+                        character.Stats.Consititution += Value;
+                        break;
+                    }
+                case "intelligence":
+                    {
+                        character.Stats.Intelligence += Value;
+                        break;
+                    }
+                case "wisdom":
+                    {
+                        character.Stats.Wisdom += Value;
+                        break;
+                    }
+                case "charisma":
+                    {
+                        character.Stats.Charisma += Value;
+                        break;
                     }
                 default:
                     return;

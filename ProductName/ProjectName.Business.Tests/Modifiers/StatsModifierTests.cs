@@ -1,9 +1,6 @@
 ﻿using NUnit.Framework;
 using ProductName.Business.Models;
 using ProductName.Business.Modifiers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectName.Business.Tests.Modifiers
 {
@@ -76,7 +73,7 @@ namespace ProjectName.Business.Tests.Modifiers
         {
             //assemble
             var value = 2;
-            var modifier = new StatsModifier("test-modifier", "widom", value);
+            var modifier = new StatsModifier("test-modifier", "wisdom", value);
             var character = new Character();
 
             //act
