@@ -2,17 +2,13 @@
 
 namespace ProductName.Business.Modifiers
 {
-    public class StatsModifier : IModifier
+    public class StatsModifier : IModifier<Character>
     {
-        public string Name { get; }
-
         public int Value { get; }
-
         public string Stat { get; }
 
-        public StatsModifier(string name, string stat, int value)
+        public StatsModifier(string stat, int value)
         {
-            Name = name;
             Stat = stat;
             Value = value;
         }

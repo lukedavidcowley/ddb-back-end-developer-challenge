@@ -6,6 +6,6 @@ namespace ProductName.Business.Models
 {
     public abstract class ModelBase
     {
-        public virtual bool IsValid => true;
+        public virtual bool IsValid() => true;
     }
 }

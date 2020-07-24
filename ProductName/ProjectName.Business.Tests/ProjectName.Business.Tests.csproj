@@ -16,4 +16,8 @@
     <ProjectReference Include="..\ProductName.Business\ProductName.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Modifiers\Factories\" />
+  </ItemGroup>
+
 </Project>

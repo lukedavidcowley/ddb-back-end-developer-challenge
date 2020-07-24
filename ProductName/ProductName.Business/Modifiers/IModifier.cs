@@ -2,10 +2,8 @@
 
 namespace ProductName.Business.Modifiers
 {
-    public interface IModifier
+    public interface IModifier<T>
     {
-        string Name { get; }
-        int Value { get; }
-        void ApplyModifier(Character character);
+        void ApplyModifier(T subject);
     }
 }
