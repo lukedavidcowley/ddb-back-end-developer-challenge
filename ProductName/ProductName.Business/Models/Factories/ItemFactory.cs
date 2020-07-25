@@ -3,17 +3,31 @@ using ProductName.Business.Modifiers;
 
 namespace ProjectName.Business.Models.Factories
 {
-    public class ItemFactory
+    internal class ItemFactory
     {
-        public static Item Build(string name, string modifier, int value, string modifiedValueTitle)
+        IModifier<Character> _modifier; 
+        public void ConfigureModifier(params string[] config) 
         {
-            switch (modifier)
+            if (config.Length == 0) return;
+            switch (config[0])
             {
                 case "stats":
-                    var statsModifier = new StatsModifier(modifiedValueTitle, value);
-                    return new Item(name, statsModifier);
+                    {
+                        if (config.Length <= 2 || !int.TryParse(config[2], out var value)) return;
+                        var statName = config[1];
+                        _modifier = new StatsModifier(statName, value);
+                        break;
+                    }
+                default:
+                    break;
             }
-            return null;
+        }
+
+
+        public Item<Character> Build(string name)
+        {
+            if (_modifier == null) return null;
+            return new Item<Character>(name, _modifier);
         }
     }
 }

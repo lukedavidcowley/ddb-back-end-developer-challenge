@@ -3,14 +3,14 @@ using System;
 
 namespace ProductName.Business.Models
 {
-    public class Item : ModelBase
+    public class Item<T> : ModelBase
     {
         public string Name { get; set; }
         public int Weight { get; set; }
         
-        protected IModifier<Character> _modifier;       
+        protected IModifier<T> _modifier;       
 
-        public Item(string name, IModifier<Character> modifier)
+        public Item(string name, IModifier<T> modifier)
         {
             Name = name;
 
@@ -18,7 +18,7 @@ namespace ProductName.Business.Models
             _modifier = modifier;
         }
 
-        public virtual void ApplyModifier(Character character)
+        public virtual void ApplyModifier(T character)
         {
             _modifier.ApplyModifier(character);
         }

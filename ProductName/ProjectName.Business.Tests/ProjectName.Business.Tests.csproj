@@ -20,7 +20,6 @@
   <ItemGroup>
     <Folder Include="Models\Factories\" />
     <Folder Include="Models\Builders\" />
-    <Folder Include="Modifiers\Factories\" />
   </ItemGroup>
 
 </Project>

@@ -9,6 +9,16 @@
         public int Wisdom { get; set; } = 1;
         public int Charisma { get; set; } = 1;
 
+        public enum Stats
+        {
+            Strength,
+            Dexterity,
+            Connstitution,
+            Intelligence,
+            Wisdom,
+            Charism
+        }
+
         public override bool IsValid()
         {
             return
