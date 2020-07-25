@@ -1,20 +1,26 @@
-﻿using ProductName.Business.Models;
-using ProductName.Business.Modifiers;
+﻿using ProductName.Business.Modifiers;
+using System.Runtime.CompilerServices;
 
-namespace ProjectName.Business.Models.Factories
+[assembly: InternalsVisibleTo("ProductName.Business.Tests")]
+namespace ProductName.Business.Models.Factories
 {
     internal class ItemFactory
     {
         IModifier<Character> _modifier; 
-        public void ConfigureModifier(params string[] config) 
+
+        public void ConfigureModifier(IModifier<Character> modifier)
         {
-            if (config.Length == 0) return;
-            switch (config[0])
+            _modifier = modifier;
+        }
+        public void ConfigureModifier(int value, params string[] configPattern) 
+        {
+            if (configPattern == null || configPattern.Length == 0) return;
+            switch (configPattern[0])
             {
                 case "stats":
                     {
-                        if (config.Length <= 2 || !int.TryParse(config[2], out var value)) return;
-                        var statName = config[1];
+                        if (configPattern.Length > 2) return;
+                        var statName = configPattern[1];
                         _modifier = new StatsModifier(statName, value);
                         break;
                     }
@@ -26,7 +32,7 @@ namespace ProjectName.Business.Models.Factories
 
         public Item<Character> Build(string name)
         {
-            if (_modifier == null) return null;
+            if (_modifier == null || string.IsNullOrEmpty(name)) return null;
             return new Item<Character>(name, _modifier);
         }
     }

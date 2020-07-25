@@ -2,7 +2,7 @@
 using ProductName.Business.Models;
 using ProductName.Business.Modifiers;
 
-namespace ProjectName.Business.Tests.Modifiers
+namespace ProductName.Business.Tests.Modifiers
 {
     [TestFixture]
     public class StatsModifierTests

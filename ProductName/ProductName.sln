@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameEngine.Tests", "GameEng
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductName.Business", "ProductName.Business\ProductName.Business.csproj", "{1CCB5481-B7DA-4065-98C8-61EA3B40BDDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectName.Business.Tests", "ProjectName.Business.Tests\ProjectName.Business.Tests.csproj", "{2252477F-4C9F-4BA8-A357-92B7D559AECE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductName.Business.Tests", "ProjectName.Business.Tests\ProductName.Business.Tests.csproj", "{2252477F-4C9F-4BA8-A357-92B7D559AECE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

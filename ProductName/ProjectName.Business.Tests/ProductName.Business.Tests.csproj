@@ -17,9 +17,4 @@
     <ProjectReference Include="..\ProductName.Business\ProductName.Business.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Factories\" />
-    <Folder Include="Models\Builders\" />
-  </ItemGroup>
-
 </Project>

@@ -6,7 +6,7 @@ using Moq;
 using ProductName.Business.Models;
 using System.Linq;
 
-namespace ProjectName.Business.Tests.Models
+namespace ProductName.Business.Tests.Models
 {
     [TestFixture]
     public class CharacterTests

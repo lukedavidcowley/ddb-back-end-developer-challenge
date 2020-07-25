@@ -1,11 +1,8 @@
 ﻿using NUnit.Framework;
 using ProductName.Business.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using static ProductName.Business.Models.CharacterClass;
 
-namespace ProjectName.Business.Tests.Models
+namespace ProductName.Business.Tests.Models
 {
     [TestFixture]
     public class CharacterClassTests
