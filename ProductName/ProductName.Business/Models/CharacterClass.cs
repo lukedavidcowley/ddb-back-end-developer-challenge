@@ -1,13 +1,13 @@
 ﻿namespace ProductName.Business.Models
 {
-    public class CharacterClass
+    public class CharacterClass : ModelBase
     {
         public CharacterType Type { get; set; }
-        public int HitDiceValue { get; set; }
-        public int Level { get; set; }
-        public enum CharacterType
+        public ushort HitDiceValue { get; set; }
+        public ushort Level { get; set; }
+        public enum CharacterType : ushort
         {
-            Barbarian,
+            Barbarian = 1,
             Bard,
             Cleric,
             Druid,
@@ -15,9 +15,18 @@
             Monk,
             Paladin,
             Ranger,
+            Rogue,
             Sorcerer,
             Warlock,
             Wizard
+        }
+
+        public override bool IsValid()
+        {
+            return
+                Type <= (CharacterType)12 &&
+                HitDiceValue > 0 &&
+                Level > 0;
         }
     }
 }
