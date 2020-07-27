@@ -14,6 +14,17 @@ namespace GameEngine.Tests.Controllers.Game
             throw new NotImplementedException();
         }
         [Test]
+        public void CanAddCharacterToGame()
+        {
+            throw new NotImplementedException();
+        }
+        [Test]
+        public void CanRemoveCharacterFromGame()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
         public void CanCloseGame()
         {
             throw new NotImplementedException();

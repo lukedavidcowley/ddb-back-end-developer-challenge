@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ProductName.Business.Models
@@ -7,6 +8,9 @@ namespace ProductName.Business.Models
     {
         public string Name { get; set; }
         public ushort Level { get; set; }
+        public ushort MaxHp => throw new NotImplementedException();
+        public ushort Hp { get; set; }
+        public ushort TemporaryHp { get; set; }
         public IEnumerable<CharacterClass> Classes { get; set; }
         public CharacterStats Stats { get; set; }
         public IEnumerable<Item<Character>> Items { get; set; }
