@@ -18,9 +18,9 @@ namespace ProductName.Business.Models
             _modifier = modifier;
         }
 
-        public virtual void ApplyModifier(T character)
+        public virtual void ApplyModifier(T target)
         {
-            _modifier.ApplyModifier(character);
+            _modifier.ApplyModifier(target);
         }
     }
 }
