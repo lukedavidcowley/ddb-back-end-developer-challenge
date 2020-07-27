@@ -12,4 +12,9 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProductName.Business\ProductName.Business.csproj" />
+    <ProjectReference Include="..\ProductName.GameEngine\ProductName.GameEngine.csproj" />
+  </ItemGroup>
+
 </Project>
