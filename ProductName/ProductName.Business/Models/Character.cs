@@ -9,6 +9,8 @@ namespace ProductName.Business.Models
         public ushort Level { get; set; }
         public IEnumerable<CharacterClass> Classes { get; set; }
         public CharacterStats Stats { get; set; }
+        public IEnumerable<Item<Character>> Items { get; set; }
+
 
         public Character() : this(string.Empty, 1, new List<CharacterClass>(), new CharacterStats())
         {

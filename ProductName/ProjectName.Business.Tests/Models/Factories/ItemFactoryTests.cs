@@ -2,7 +2,7 @@
 using ProductName.Business.Models.Factories;
 using ProductName.Business.Tests.src;
 
-namespace ProductName.Business.Tests.Modifiers.Factories
+namespace ProductName.Business.Tests.Models.Factories
 {
     [TestFixture]
     public class ItemFactoryTests
