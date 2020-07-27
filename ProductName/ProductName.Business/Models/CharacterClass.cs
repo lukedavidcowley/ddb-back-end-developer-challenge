@@ -5,21 +5,6 @@
         public CharacterType Type { get; set; }
         public ushort HitDiceValue { get; set; }
         public ushort Level { get; set; }
-        public enum CharacterType : ushort
-        {
-            Barbarian = 1,
-            Bard,
-            Cleric,
-            Druid,
-            Fighter,
-            Monk,
-            Paladin,
-            Ranger,
-            Rogue,
-            Sorcerer,
-            Warlock,
-            Wizard
-        }
 
         public override bool IsValid()
         {
