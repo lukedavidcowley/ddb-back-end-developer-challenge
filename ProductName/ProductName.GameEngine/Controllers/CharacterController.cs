@@ -13,6 +13,8 @@ namespace ProductName.GameEngine.Controllers
     public class CharacterController : ControllerBase
     {
 
+
+
         [Route("{characterId}/hp/add")]
         public bool AddHitPoints(Guid characterId, int value)
         {

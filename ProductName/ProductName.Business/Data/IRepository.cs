@@ -8,7 +8,7 @@ namespace ProductName.Business.Data
 {
     public interface IRepository<T> where T: ModelBase
     {
-        Task<IEnumerable<T>> GetAsync();
+        Task<T> GetAsync(Guid id);
         Task<bool> CreateOrUpdateAsync(T model);
         Task<int> CreateOrUpdateAsync(IEnumerable<T> models);
     }
