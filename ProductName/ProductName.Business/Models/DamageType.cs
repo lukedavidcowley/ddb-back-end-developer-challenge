@@ -1,6 +1,6 @@
 ﻿namespace ProductName.Business.Models
 {
-    public enum DamageType : ushort
+    public enum DamageType : int
     {
         Acid = 0,
         Bludgeoning = 1 << 0, 

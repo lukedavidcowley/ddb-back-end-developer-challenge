@@ -8,7 +8,7 @@ namespace ProductName.Business.Services
 {
     public interface ICharacterService
     {
-        Task<bool> AddHitPoints(Guid characterId, ushort value, bool temporary);
-        Task<bool> Attack(Guid characterId, ushort value, DamageType damageType);
+        Task AddHitPointsAsync(Guid characterId, int value, bool temporary);
+        Task<bool> AttackAsync(Guid characterId, int value, DamageType damageType);
     }
 }

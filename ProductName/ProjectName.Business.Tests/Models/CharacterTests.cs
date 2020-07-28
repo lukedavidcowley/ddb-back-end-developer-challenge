@@ -12,7 +12,7 @@
 //    public class CharacterTests
 //    {
 //        private const string _validName = "test";
-//        private const ushort _validLevel = 1;
+//        private const int _validLevel = 1;
 //        private static IEnumerable<CharacterClass> _validClasses
 //        {
 //            get

@@ -1,9 +1,8 @@
 ﻿using ProductName.Business.Data;
 using ProductName.Business.Models;
+using ProductName.Business.Rulesets.Hp;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProductName.Business.Services
@@ -11,13 +10,17 @@ namespace ProductName.Business.Services
     public class CharacterService : ICharacterService
     {
         private readonly IRepository<Character> _characterRepository;
+        //private readonly IHPGenerator _hpGenerator;
 
-        public CharacterService(IRepository<Character> repository)
+        public CharacterService(IRepository<Character> repository)//, IHPGenerator hpGenerator)
         {
             _characterRepository = repository;
+            //_hpGenerator = hpGenerator;
         }
 
-        public async Task<bool> AddHitPointsAsync(Guid characterId, ushort value, bool temporary)
+        //public void AddLevel() { }
+
+        public async Task AddHitPointsAsync(Guid characterId, int value, bool temporary)
         {
             var character = (await _characterRepository.GetAsync())
                .FirstOrDefault(c => c.Id == characterId);
@@ -27,13 +30,49 @@ namespace ProductName.Business.Services
             }
             else
             {
-                character.Hp += 
+                character.MaxHp += value;
+            }
+            
+        }
+
+        public async Task<bool> AttackAsync(Guid characterId, int value, DamageType damageType)
+        {
+            var character = (await _characterRepository.GetAsync())
+                .FirstOrDefault(c => c.Id == characterId);
+            if(character == null)
+            {
+                return false;
+            }
+            if (character.Defences.ContainsKey(damageType))
+            {
+                var defence = character.Defences[damageType];
+                switch (defence)
+                {
+                    case ResistType.HalfDamage:
+                        ApplyDamage(value / 2, character);
+                        return true;
+                    case ResistType.Immune:
+                        return true; ;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                ApplyDamage(value, character);
+                return true;
             }
         }
 
-        public async Task<bool> Attack(Guid characterId, ushort value, DamageType damageType)
+        private static void ApplyDamage(int value, Character character)
         {
-            throw new NotImplementedException();
+            var tempHp = character.TemporaryHp - value;
+            character.TemporaryHp = tempHp > 0 ? tempHp : 0;
+
+            if(tempHp < 0)
+            {
+                character.Hp += tempHp;
+            }
         }
     }
 }

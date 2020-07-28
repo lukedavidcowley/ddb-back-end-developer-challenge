@@ -1,33 +1,22 @@
-﻿namespace ProductName.Business.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ProductName.Business.Models
 {
-    public class CharacterClass : ModelBase
+    public enum CharacterClass
     {
-        public CharacterType Type { get; set; }
-        public ushort HitDiceValue { get; set; }
-        public ushort Level { get; set; }
-
-        public enum CharacterType
-        {
-            Barbarian = 1,
-            Bard,
-            Cleric,
-            Druid,
-            Fighter,
-            Monk,
-            Paladin,
-            Ranger,
-            Rogue,
-            Sorcerer,
-            Warlock,
-            Wizard
-        }
-
-        public override bool IsValid()
-        {
-            return
-                Type <= (CharacterType)12 &&
-                HitDiceValue > 0 &&
-                Level > 0;
-        }
+        Barbarian = 1,
+        Bard,
+        Cleric,
+        Druid,
+        Fighter,
+        Monk,
+        Paladin,
+        Ranger,
+        Rogue,
+        Sorcerer,
+        Warlock,
+        Wizard
     }
 }

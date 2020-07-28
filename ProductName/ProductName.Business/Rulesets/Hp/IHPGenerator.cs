@@ -7,6 +7,6 @@ namespace ProductName.Business.Rulesets.Hp
 {
     public interface IHPGenerator
     {
-        ushort GetHP(CharacterClass characterClass);
+        int GetHP(CharacterClassDetails characterClass, int constitution);
     }
 }

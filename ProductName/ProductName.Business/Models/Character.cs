@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProductName.Business.Rulesets.Hp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,12 +9,12 @@ namespace ProductName.Business.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public ushort Level { get; set; }
-        public ushort MaxHp { get; set; }
-        public ushort Hp { get; set; }
+        public int Level { get; set; }
+        public int MaxHp { get; set; }
+        public int Hp { get; set; }
 
-        private ushort _temporaryHp;
-        public ushort TemporaryHp
+        private int _temporaryHp;
+        public int TemporaryHp
         { 
             get 
             {
@@ -26,29 +27,32 @@ namespace ProductName.Business.Models
             }
         }
 
-        public IEnumerable<CharacterClass> Classes { get; set; } = new List<CharacterClass>();
+        public IDictionary<CharacterClass, CharacterClassDetails> Classes { get; } = new Dictionary<CharacterClass, CharacterClassDetails>();
+        public IDictionary<DamageType, ResistType> Defences { get; } = new Dictionary<DamageType, ResistType>();
         public CharacterStats Stats { get; set; } = new CharacterStats();
         public IEnumerable<Item<Character>> Items { get; set; } = new List<Item<Character>>();
 
-
-        public Character() : this(string.Empty, 1, new List<CharacterClass>(), new CharacterStats())
-        {
-
-        }
-
-        public Character(string name, ushort level, IEnumerable<CharacterClass> classes, CharacterStats stats)
+        public Character() { }
+         
+        public Character(string name, int level, IEnumerable<(CharacterClass, CharacterClassDetails)> classes, CharacterStats stats, IHPGenerator hpGenerator, int currentHp = 0)
         {
             Name = name;
             Level = level;
-            Classes = classes ?? new List<CharacterClass>();
             Stats = stats ?? new CharacterStats();
 
-            //set max hp
-            int maxHp = 0;
-            foreach(var charClass in classes)
+            if(hpGenerator != null)
             {
-                maxHp += (charClass.HitDiceValue / 2) + 1;
+                foreach (var characterClass in classes)
+                {
+                    hpGenerator.GetHP(new CharacterClassDetails
+                    {
+                        HitDiceValue = characterClass.Item2.HitDiceValue,
+                        Level = characterClass.Item2.Level
+                    }, (int)stats.Consititution);
+                }
             }
+            
+            Hp = MaxHp;
         }
 
 
@@ -58,7 +62,7 @@ namespace ProductName.Business.Models
                 !string.IsNullOrEmpty(Name) &&
                 Level > 0 &&
                 Classes.Count() > 0 &&
-                Classes.All(c => c.IsValid()) &&
+                Classes.Count() <= 2 &&
                 Stats.IsValid();
         }
     }
