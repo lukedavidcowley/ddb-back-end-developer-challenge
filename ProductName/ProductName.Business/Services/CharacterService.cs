@@ -22,8 +22,7 @@ namespace ProductName.Business.Services
 
         public async Task AddHitPointsAsync(Guid characterId, int value, bool temporary)
         {
-            var character = (await _characterRepository.GetAsync())
-               .FirstOrDefault(c => c.Id == characterId);
+            var character = await _characterRepository.GetAsync(characterId);
             if(temporary)
             {
                 character.TemporaryHp = value;
@@ -37,8 +36,7 @@ namespace ProductName.Business.Services
 
         public async Task<bool> AttackAsync(Guid characterId, int value, DamageType damageType)
         {
-            var character = (await _characterRepository.GetAsync())
-                .FirstOrDefault(c => c.Id == characterId);
+            var character = await _characterRepository.GetAsync(characterId);
             if(character == null)
             {
                 return false;

@@ -33,8 +33,8 @@ namespace ProductName.Business.Tests.Services
             };
 
             var repo = new Mock<IRepository<Character>>();
-            repo.Setup(r => r.GetAsync())
-                .ReturnsAsync(new List<Character> { character });
+            repo.Setup(r => r.GetAsync(It.IsAny<Guid>()))
+                .ReturnsAsync(character);
             var service = new CharacterService(repo.Object);
 
            
@@ -67,8 +67,8 @@ namespace ProductName.Business.Tests.Services
             };
 
             var repo = new Mock<IRepository<Character>>();
-            repo.Setup(r => r.GetAsync())
-                .ReturnsAsync(new List<Character> { character });
+            repo.Setup(r => r.GetAsync(It.IsAny<Guid>()))
+                .ReturnsAsync(character);
             var service = new CharacterService(repo.Object);
 
             //act
@@ -97,8 +97,8 @@ namespace ProductName.Business.Tests.Services
             };
 
             var repo = new Mock<IRepository<Character>>();
-            repo.Setup(r => r.GetAsync())
-                .ReturnsAsync(new List<Character> { character });
+            repo.Setup(r => r.GetAsync(It.IsAny<Guid>()))
+                .ReturnsAsync(character);
             var service = new CharacterService(repo.Object);
 
             //act
@@ -128,8 +128,8 @@ namespace ProductName.Business.Tests.Services
             character.Defences[DamageType.Acid] = ResistType.HalfDamage;
 
             var repo = new Mock<IRepository<Character>>();
-            repo.Setup(r => r.GetAsync())
-                .ReturnsAsync(new List<Character> { character });
+            repo.Setup(r => r.GetAsync(It.IsAny<Guid>()))
+                .ReturnsAsync(character);
             var service = new CharacterService(repo.Object);
 
             //act
@@ -159,8 +159,8 @@ namespace ProductName.Business.Tests.Services
             character.Defences[DamageType.Acid] = ResistType.Immune;
 
             var repo = new Mock<IRepository<Character>>();
-            repo.Setup(r => r.GetAsync())
-                .ReturnsAsync(new List<Character> { character });
+            repo.Setup(r => r.GetAsync(It.IsAny<Guid>()))
+                .ReturnsAsync(character);
             var service = new CharacterService(repo.Object);
 
             //act
