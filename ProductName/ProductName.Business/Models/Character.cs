@@ -6,11 +6,26 @@ namespace ProductName.Business.Models
 {
     public class Character : ModelBase
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public ushort Level { get; set; }
         public ushort MaxHp { get; set; }
         public ushort Hp { get; set; }
-        public ushort TemporaryHp { get; set; }
+
+        private ushort _temporaryHp;
+        public ushort TemporaryHp
+        { 
+            get 
+            {
+                return _temporaryHp;
+            }
+            set
+            {
+                if (value > _temporaryHp)
+                    _temporaryHp = value;
+            }
+        }
+
         public IEnumerable<CharacterClass> Classes { get; set; } = new List<CharacterClass>();
         public CharacterStats Stats { get; set; } = new CharacterStats();
         public IEnumerable<Item<Character>> Items { get; set; } = new List<Item<Character>>();

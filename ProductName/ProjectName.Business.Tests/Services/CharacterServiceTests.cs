@@ -11,19 +11,19 @@ namespace ProductName.Business.Tests.Services
         [Test]
         public void AddHitPoints_Adds_HP_To_Character()
         {
-
+            throw new NotImplementedException();
         }
 
         [Test]
         public void AddHitPoitns_Adds_Temporary_HP_To_Character()
         {
-
+            throw new NotImplementedException();
         }
 
         [Test]
         public void Attack_Reduces_HP_Of_Character()
         {
-
+            throw new NotImplementedException();
         }
     }
 }
