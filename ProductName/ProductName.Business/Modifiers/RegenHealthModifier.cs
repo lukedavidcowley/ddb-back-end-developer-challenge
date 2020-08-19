@@ -5,17 +5,18 @@ using System.Text;
 
 namespace ProductName.Business.Modifiers
 {
-    public class AddTemporanyHealthModifier : HealthModifier
+    public class RegenHealthModifier : HealthModifier
     {
-        private readonly int _tempHp;
-        public AddTemporanyHealthModifier(int tempHp, DateTime addedAt) : base()
+        private int _amount;
+        public RegenHealthModifier(int amount, DateTime addedAt)
         {
-            _tempHp = tempHp;
+            _amount = amount;
             AddedAt = addedAt;
         }
+
         public override void ApplyModifier(Character subject)
         {
-            SetTemporaryHp(subject, _tempHp);
+            AddHp(subject, _amount);
         }
     }
 }

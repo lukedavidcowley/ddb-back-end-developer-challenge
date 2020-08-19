@@ -1,25 +1,27 @@
 ﻿using NUnit.Framework;
 using ProductName.Business.Models;
 using ProductName.Business.Modifiers;
+using System.Collections.Generic;
 
 namespace ProductName.Business.Tests.Modifiers
 {
     [TestFixture]
     public class StatsModifierTests
     {
+        private Character _character => new Character("test", 1, null, null, 1);
         [Test]
         public void ApplyModifier_Applies_Modification_To_Strength()
         {
             //assemble
             var value = 2;
             var modifier = new StatsModifier("strength", value);
-            var character = new Character();
+            var character = _character;
 
             //act
             character.AddModifier(modifier);
 
             //assert
-            Assert.IsTrue(character.Strength == value + 1);
+            Assert.AreEqual(character.Strength, value + 1);
         }
 
         [Test]
@@ -28,13 +30,13 @@ namespace ProductName.Business.Tests.Modifiers
             //assemble
             var value = 2;
             var modifier = new StatsModifier("dexterity", value);
-            var character = new Character();
+            var character = _character;
 
             //act
             character.AddModifier(modifier);
 
             //assert
-            Assert.IsTrue(character.Dexterity == value + 1);
+            Assert.AreEqual(character.Dexterity, value + 1);
         }
 
         [Test]
@@ -43,13 +45,13 @@ namespace ProductName.Business.Tests.Modifiers
             //assemble
             var value = 2;
             var modifier = new StatsModifier("constitution", value);
-            var character = new Character();
+            var character = _character;
 
             //act
             character.AddModifier(modifier);
 
             //assert
-            Assert.IsTrue(character.Consititution == value + 1);
+            Assert.AreEqual(character.Consititution, value + 1);
 
         }
 
@@ -59,13 +61,13 @@ namespace ProductName.Business.Tests.Modifiers
             //assemble
             var value = 2;
             var modifier = new StatsModifier("intelligence", value);
-            var character = new Character();
+            var character = _character;
 
             //act
             character.AddModifier(modifier);
 
             //assert
-            Assert.IsTrue(character.Intelligence == value + 1);
+            Assert.AreEqual(character.Intelligence, value + 1);
         }
 
         [Test]
@@ -74,7 +76,7 @@ namespace ProductName.Business.Tests.Modifiers
             //assemble
             var value = 2;
             var modifier = new StatsModifier("wisdom", value);
-            var character = new Character();
+            var character = _character;
 
             //act
             character.AddModifier(modifier);
@@ -88,7 +90,7 @@ namespace ProductName.Business.Tests.Modifiers
             //assemble
             var value = 2;
             var modifier = new StatsModifier("charisma", value);
-            var character = new Character();
+            var character = _character;
 
 
             //act

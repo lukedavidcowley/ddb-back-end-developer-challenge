@@ -11,10 +11,11 @@ namespace ProductName.Business.Modifiers
         private readonly DamageType _type;
         private readonly int _value;
 
-        public DamageModifier(DamageType type, int value)
+        public DamageModifier(DamageType type, int value, DateTime addedAt)
         {
             _type = type;
             _value = value;
+            AddedAt = addedAt;
         }
         public override void ApplyModifier(Character subject)
         {

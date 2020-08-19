@@ -10,7 +10,7 @@ namespace ProductName.Business.Tests.src
     {
         public int GetHP(CharacterClassDetails characterClass, int constitution)
         {
-            return 10;
+            return 0;
         }
     }
 }

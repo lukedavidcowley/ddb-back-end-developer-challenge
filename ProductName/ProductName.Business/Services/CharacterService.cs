@@ -26,11 +26,11 @@ namespace ProductName.Business.Services
             var character = await _characterRepository.GetAsync(characterId);
             if(temporary)
             {
-                character.AddModifier(new AddTemporanyHealthModifier(value));
+                character.AddModifier(new AddTemporanyHealthModifier(value, DateTime.Now));
             }
             else
             {
-                character.CurrentHp += value;
+                character.AddModifier(new RegenHealthModifier(value, DateTime.Now));
             }
             
         }
@@ -39,7 +39,7 @@ namespace ProductName.Business.Services
         {
             var character = await _characterRepository.GetAsync(characterId);
             if(character == null) return false;
-            character.AddModifier(new DamageModifier(damageType, value));
+            character.AddModifier(new DamageModifier(damageType, value, DateTime.Now));
             return true;
 
         }
