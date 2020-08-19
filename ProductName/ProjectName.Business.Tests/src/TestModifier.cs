@@ -8,6 +8,8 @@ namespace ProductName.Business.Tests.src
 {
     public class TestModifier : IModifier<Character>
     {
+        public DateTime AddedAt => throw new NotImplementedException();
+
         public void ApplyModifier(Character subject)
         {
             

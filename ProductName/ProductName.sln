@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductName.GameEngine", "P
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E7183DB4-0B21-4509-9D4E-E008B2B91CAC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameEngine.Tests", "GameEngine.Tests\GameEngine.Tests.csproj", "{0EC1CA2C-0801-492A-9F07-F3C51A076D56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductName.GameEngine.Tests", "GameEngine.Tests\ProductName.GameEngine.Tests.csproj", "{0EC1CA2C-0801-492A-9F07-F3C51A076D56}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductName.Business", "ProductName.Business\ProductName.Business.csproj", "{1CCB5481-B7DA-4065-98C8-61EA3B40BDDB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductName.Business.Tests", "ProjectName.Business.Tests\ProductName.Business.Tests.csproj", "{2252477F-4C9F-4BA8-A357-92B7D559AECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductName.DataAccess", "ProductName.DataAccess\ProductName.DataAccess.csproj", "{8DF1C3F7-EE49-47D9-B5C9-B44715517458}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{2252477F-4C9F-4BA8-A357-92B7D559AECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2252477F-4C9F-4BA8-A357-92B7D559AECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2252477F-4C9F-4BA8-A357-92B7D559AECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF1C3F7-EE49-47D9-B5C9-B44715517458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF1C3F7-EE49-47D9-B5C9-B44715517458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF1C3F7-EE49-47D9-B5C9-B44715517458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF1C3F7-EE49-47D9-B5C9-B44715517458}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

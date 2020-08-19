@@ -29,7 +29,7 @@ namespace ProductName.DataAccess.Repositories
 
         public async Task<Character> GetAsync(Guid id)
         {
-            return await _context.Characters.FirstOrDefaultAsync(c => );
+            return await _context.Characters.FirstOrDefaultAsync(c => c.Id == id);
         }
     }
 }

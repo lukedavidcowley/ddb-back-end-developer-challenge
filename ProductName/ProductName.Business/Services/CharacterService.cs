@@ -1,5 +1,6 @@
 ﻿using ProductName.Business.Data;
 using ProductName.Business.Models;
+using ProductName.Business.Modifiers;
 using ProductName.Business.Rulesets.Hp;
 using System;
 using System.Linq;
@@ -10,12 +11,12 @@ namespace ProductName.Business.Services
     public class CharacterService : ICharacterService
     {
         private readonly IRepository<Character> _characterRepository;
-        //private readonly IHPGenerator _hpGenerator;
+        private readonly IHPGenerator _hpGenerator;
 
-        public CharacterService(IRepository<Character> repository)//, IHPGenerator hpGenerator)
+        public CharacterService(IRepository<Character> repository, IHPGenerator hpGenerator)
         {
             _characterRepository = repository;
-            //_hpGenerator = hpGenerator;
+            _hpGenerator = hpGenerator;
         }
 
         //public void AddLevel() { }
@@ -25,11 +26,11 @@ namespace ProductName.Business.Services
             var character = await _characterRepository.GetAsync(characterId);
             if(temporary)
             {
-                character.TemporaryHp = value;
+                character.AddModifier(new AddTemporanyHealthModifier(value));
             }
             else
             {
-                character.MaxHp += value;
+                character.CurrentHp += value;
             }
             
         }
@@ -37,40 +38,12 @@ namespace ProductName.Business.Services
         public async Task<bool> AttackAsync(Guid characterId, int value, DamageType damageType)
         {
             var character = await _characterRepository.GetAsync(characterId);
-            if(character == null)
-            {
-                return false;
-            }
-            if (character.Defences.ContainsKey(damageType))
-            {
-                var defence = character.Defences[damageType];
-                switch (defence)
-                {
-                    case ResistType.HalfDamage:
-                        ApplyDamage(value / 2, character);
-                        return true;
-                    case ResistType.Immune:
-                        return true; ;
-                    default:
-                        return false;
-                }
-            }
-            else
-            {
-                ApplyDamage(value, character);
-                return true;
-            }
+            if(character == null) return false;
+            character.AddModifier(new DamageModifier(damageType, value));
+            return true;
+
         }
 
-        private static void ApplyDamage(int value, Character character)
-        {
-            var tempHp = character.TemporaryHp - value;
-            character.TemporaryHp = tempHp > 0 ? tempHp : 0;
 
-            if(tempHp < 0)
-            {
-                character.Hp += tempHp;
-            }
-        }
     }
 }

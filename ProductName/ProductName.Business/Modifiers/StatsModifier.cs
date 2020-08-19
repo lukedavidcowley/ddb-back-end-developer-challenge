@@ -2,7 +2,7 @@
 
 namespace ProductName.Business.Modifiers
 {
-    public class StatsModifier : IModifier<Character>
+    public class StatsModifier : CharacterModifierBase
     {
         public int Value { get; }
         public string Stat { get; }
@@ -13,38 +13,39 @@ namespace ProductName.Business.Modifiers
             Value = value;
         }
 
-        public void ApplyModifier(Character character)
+        public override void ApplyModifier(Character character)
         {
+            base.ApplyModifier(character);
             switch (Stat.ToLower())
             {
                 case "strength":
                     {
-                        character.Stats.Strength += Value;
+                        character.Strength += Value;
                         break;
                     }
                 case "dexterity":
                     {
-                        character.Stats.Dexterity += Value;
+                        character.Dexterity += Value;
                         break;
                     }
                 case "constitution":
                     {
-                        character.Stats.Consititution += Value;
+                        character.Consititution += Value;
                         break;
                     }
                 case "intelligence":
                     {
-                        character.Stats.Intelligence += Value;
+                        character.Intelligence += Value;
                         break;
                     }
                 case "wisdom":
                     {
-                        character.Stats.Wisdom += Value;
+                        character.Wisdom += Value;
                         break;
                     }
                 case "charisma":
                     {
-                        character.Stats.Charisma += Value;
+                        character.Charisma += Value;
                         break;
                     }
                 default:

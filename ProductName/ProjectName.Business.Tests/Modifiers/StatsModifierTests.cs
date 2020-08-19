@@ -16,10 +16,10 @@ namespace ProductName.Business.Tests.Modifiers
             var character = new Character();
 
             //act
-            modifier.ApplyModifier(character);
+            character.AddModifier(modifier);
 
             //assert
-            Assert.IsTrue(character.Stats.Strength == value + 1);
+            Assert.IsTrue(character.Strength == value + 1);
         }
 
         [Test]
@@ -31,10 +31,10 @@ namespace ProductName.Business.Tests.Modifiers
             var character = new Character();
 
             //act
-            modifier.ApplyModifier(character);
+            character.AddModifier(modifier);
 
             //assert
-            Assert.IsTrue(character.Stats.Dexterity == value + 1);
+            Assert.IsTrue(character.Dexterity == value + 1);
         }
 
         [Test]
@@ -46,10 +46,10 @@ namespace ProductName.Business.Tests.Modifiers
             var character = new Character();
 
             //act
-            modifier.ApplyModifier(character);
+            character.AddModifier(modifier);
 
             //assert
-            Assert.IsTrue(character.Stats.Consititution == value + 1);
+            Assert.IsTrue(character.Consititution == value + 1);
 
         }
 
@@ -62,10 +62,10 @@ namespace ProductName.Business.Tests.Modifiers
             var character = new Character();
 
             //act
-            modifier.ApplyModifier(character);
+            character.AddModifier(modifier);
 
             //assert
-            Assert.IsTrue(character.Stats.Intelligence == value + 1);
+            Assert.IsTrue(character.Intelligence == value + 1);
         }
 
         [Test]
@@ -77,10 +77,10 @@ namespace ProductName.Business.Tests.Modifiers
             var character = new Character();
 
             //act
-            modifier.ApplyModifier(character);
+            character.AddModifier(modifier);
 
             //assert
-            Assert.IsTrue(character.Stats.Wisdom == value + 1);
+            Assert.IsTrue(character.Wisdom == value + 1);
         }
         [Test]
         public void ApplyModifier_Applies_Modification_To_Charisma()
@@ -90,11 +90,12 @@ namespace ProductName.Business.Tests.Modifiers
             var modifier = new StatsModifier("charisma", value);
             var character = new Character();
 
+
             //act
-            modifier.ApplyModifier(character);
+            character.AddModifier(modifier);
 
             //assert
-            Assert.IsTrue(character.Stats.Charisma == value + 1);
+            Assert.IsTrue(character.Charisma == value + 1);
         }
     }
 }

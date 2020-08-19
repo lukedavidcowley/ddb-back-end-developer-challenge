@@ -13,15 +13,11 @@
 //    {
 //        private const string _validName = "test";
 //        private const int _validLevel = 1;
-//        private static IEnumerable<CharacterClass> _validClasses
+//        private static IEnumerable<(CharacterClass, CharacterClassDetails)> _validClasses
 //        {
 //            get
 //            {
-//                var charClass = new Mock<CharacterClass>();
-//                charClass
-//                    .Setup(c => c.IsValid())
-//                    .Returns(true);
-//                return new List<CharacterClass> { charClass.Object };
+//                return new List<(CharacterClass, CharacterClassDetails)> { (CharacterClass.Barbarian, new CharacterClassDetails()) };
 //            }
 //        }
 //        private static CharacterStats _validCharacterStats =
@@ -39,7 +35,7 @@
 //        public void IsValid_Returns_False_With_Empty_Name()
 //        {
 //            //assemble
-//            var character = new Character("", _validLevel, _validClasses, _validCharacterStats);
+//            var character = new Character("", _validLevel, _validClasses, _validCharacterStats, 1);
 
 //            //act
 //            var result = character.IsValid();
@@ -52,7 +48,7 @@
 //        public void IsValid_Returns_False_With_Null_Name()
 //        {
 //            //assemble
-//            var character = new Character(null, _validLevel, _validClasses, _validCharacterStats);
+//            var character = new Character(null, _validLevel, _validClasses, _validCharacterStats, 1);
 
 //            //act
 //            var result = character.IsValid();
@@ -64,7 +60,7 @@
 //        [Test]
 //        public void IsValid_Returns_False_With_Zero_Level()
 //        {
-//            var character = new Character(_validName, 0, _validClasses, _validCharacterStats);
+//            var character = new Character(_validName, 0, _validClasses, _validCharacterStats, 1);
 
 //            //act
 //            var result = character.IsValid();
@@ -77,7 +73,7 @@
 //        public void IsValid_Returns_False_With_No_Classes()
 //        {
 //            //assemble
-//            var character = new Character(_validName, _validLevel, new List<CharacterClass>(), _validCharacterStats);
+//            var character = new Character(_validName, _validLevel, new List<(CharacterClass, CharacterClassDetails)>(), _validCharacterStats, 1);
 
 //            //act
 //            var result = character.IsValid();
@@ -97,7 +93,7 @@
 
 //            var classes = new List<CharacterClass> { charClassOne.Object };
 
-//            var character = new Character(_validName, _validLevel, classes, _validCharacterStats);
+//            var character = new Character(_validName, _validLevel, classes, _validCharacterStats, 1);
 
 //            //act
 //            var result = character.IsValid();
@@ -134,15 +130,9 @@
 //        public void IsValid_Returns_False_With_One_Invalid_Class()
 //        {
 //            //assemble
-//            var charClassOne = new Mock<CharacterClass>();
-//            charClassOne
-//                .Setup(c => c.IsValid())
-//                .Returns(false);
-
+//            var charClassOne = new Mock<(CharacterClass, CharacterClassDetails)>();
 //            var charClassTwo = new Mock<CharacterClass>();
-//            charClassTwo
-//                .Setup(c => c.IsValid())
-//                .Returns(false);
+
 
 //            var classes = new List<CharacterClass> { charClassOne.Object, charClassTwo.Object };
 
@@ -214,7 +204,7 @@
 //            var classes = new List<CharacterClass> { charClassOne.Object, charClassTwo.Object };
 
 //            var character = new Character(_validName, _validLevel, classes, _validCharacterStats);
-            
+
 //            //act
 //            var result = character.IsValid();
 

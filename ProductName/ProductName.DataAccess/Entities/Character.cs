@@ -37,7 +37,8 @@ namespace ProductName.DataAccess.Entities
             //stats
             var stats = new Business.Models.CharacterStats(character.Strength, character.Dexterity, character.Constitution, character.Intelligence, character.Wisdom, character.Charisma);
 
-            return new Business.Models.Character(character.Name, character.Level, classes, stats,)
+            throw new NotImplementedException();
+            //return new Business.Models.Character(character.Name, character.Level, classes, stats,)
         }
     }
 }

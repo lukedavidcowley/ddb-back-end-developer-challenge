@@ -9,7 +9,7 @@ namespace ProductName.DataAccess.Entities
     public class EntityBase
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        Guid Id { get; set; }
+        public Guid Id { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime UpdatedOn { get; set; }
     }

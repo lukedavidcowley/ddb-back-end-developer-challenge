@@ -9,6 +9,18 @@
         public int Wisdom { get; set; } = 1;
         public int Charisma { get; set; } = 1;
 
+        public CharacterStats() { }
+
+        public CharacterStats(int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma)
+        {
+            Strength = strength;
+            Dexterity = dexterity;
+            Consititution = constitution;
+            Intelligence = intelligence;
+            Wisdom = wisdom;
+            Charisma = charisma;
+        }
+
         public enum Stats
         {
             Strength,
